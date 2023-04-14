@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Website - Projects</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Hamza Ayub</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="education.html">Education</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>My Projects</h2>
+      <form>
+        <label for="filter">Filter by technology:</label>
+        <input type="text" id="filter" name="filter">
+        <button type="submit">Filter</button>
+      </form>
+      <ul id="project-list">
+        <li data-technology="C">
+          <h3>Apetite Fullfilled</h3>
+          <p>Technology: C</p>
+        </li>
+        <li data-technology="C++">
+          <h3>University Point Management System</h3>
+          <p>Technology: C++</p>
+        </li>
+        <li data-technology="PHP,Html,CSS">
+          <h3>Automobile Sale Exposition Website</h3>
+          <p>Technology: PHP,Html,CSS</p>
+        </li>
+      </ul>
+    </main>
+    <footer>
+      <p>&copy; 2023 My Website</p>
+    </footer>
+    <script>
+      const projectList = document.getElementById('project-list');
+      const filterInput = document.getElementById('filter');
+      const form = document.querySelector('form');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const filterValue = filterInput.value.toLowerCase();
+        for (let i = 0; i < projectList.children.length; i++) {
+          const project = projectList.children[i];
+          const technology = project.getAttribute('data-technology').toLowerCase();
+          if (technology.includes(filterValue)) {
+            project.style.display = 'block';
+          } else {
+            project.style.display = 'none';
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
